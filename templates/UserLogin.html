@@ -1,0 +1,27 @@
+{% extends 'base.html'%}
+{%block contents%}
+<center>
+ <section id="intro" style="width: 50%;">
+    <div class="intro-text">
+        <p><h2>User Login</h2></p>
+       <form method="POST" action="{%url 'UserLoginCheck'%}" >
+                {% csrf_token %}
+                <table>
+
+                    Login ID <input class='form-control' , type="text" name="loginname" pattern="[a-zA-Z]+" required="True"><br><br>
+                    Password <input class='form-control' type="password" name="pswd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required="True"><br><br>
+                        <button  class="btn btn-outline-success my-2 my-sm-0" type="submit" style = "margin-left:20%;">Login</button><br>
+
+                        {% if messages %}
+                               {% for message in messages %}
+                                  <font color="RED"> {{ message }}</font>
+                               {% endfor %}
+                           {% endif %}
+
+                </table>
+
+            </form>  </p>New User ? <a class="nav-link" href="{%url 'UserRegisterAction'%}" style="color: blue;">Register Here</a>
+    </div>
+  </section>
+</center>
+{%endblock%}

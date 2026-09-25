@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+{%block contents%}
+<center>
+ <section id="intro" style="width: 50%;">
+
+    <div class="intro-text">
+      <p><h2>Admin Login</h2></p>
+       <form method="POST" action="{%url 'AdminLoginCheck'%}" >
+                {% csrf_token %}
+                <table>
+                     Login ID<input class='form-control' type="text" name="loginname" required="True"><br><br>
+                    Password<input class='form-control' type="password" name="pswd" required="true"><br><br>
+
+
+                    <button  class="btn btn-outline-success my-2 my-sm-0" type="submit" style = "margin-left:20%;">Login</button>
+
+                        {% if messages %}
+                               {% for message in messages %}
+                                  <font color='GREEN'> {{ message }}</font>
+                               {% endfor %}
+                           {% endif %}
+
+                </table>
+
+            </form>  </p><a class="nav-link" href=""></a>
+    </div>
+  </section>
+</center>
+{%endblock%}
